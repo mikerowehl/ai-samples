@@ -1,4 +1,4 @@
-# Multi-agent Supervisor
+# Multi-agent Supervisor (updates included below)
 
 I have a few things I've done using tool/MCP hookups to LLM models. Generally
 those have been working fantastic through langchain or with the ReACT agent
@@ -56,3 +56,17 @@ supervisor harness for langgraph that's keeping it from even trying. My
 assumption was that the models besides gpt might not work very well in the
 framework, especially if they're not tuned for reasoning. But having it fail
 outright and just not hook up to the handoffs feels pretty weird.
+
+## Update June 28, 2025
+With ollama updated to the latest from their installer (0.9.3) and updating
+the versions of the langchain/graph libraries to the latest this
+at least passes control around now. qwen3 thinks it's 2023 however and tries
+to estimate the values based on best guesses instead of actually calling any 
+tools. But maybe some updating the prompt will get it to display the intended
+behavior.
+
+But also, the examples from Langchains
+[Agents from Scratch](https://github.com/langchain-ai/agents-from-scratch)
+example that goes along with one of their recent tutorial series works very
+well with the local models I've tested. Maybe this supervisor library is a
+bit too bleeding edge and the better method is to build the graph manually.
