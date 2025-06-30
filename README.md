@@ -8,3 +8,6 @@ all if you swap to something other than what was initially used. Understandable,
 a new style of development. But I would  like to see the new tools, in particular open source tools, 
 allow for a selection of models. So just trying to figure out a few places where this isn't working as expected
 currently and maybe we can come up with something that makes it a bit easier to spot issues.
+
+* [supervisor sample](supervisor) - the base example from the langgraph supervisor module
+* [simple react agent](simple-agent) - take the web search part of the supervisor example and make it work with qwen
