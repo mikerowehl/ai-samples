@@ -32,3 +32,9 @@ Obviously this added a lot of very strict and fragile connections. I'll probably
 setup somewhat to see if I can get that to be a little less structured. But I was happy to at least get
 something that looked like it was doing a bit of reasoning out of qwen. It's supposed to be a great
 reasoning model, but it was just tripping over the default setups meant for the more mainstream models.
+
+I've also captured the runs using some different models using Langsmith. I've run these on my local Linux
+desktop system without a GPU, so please note that the execution times are extremely long. That's not the
+fault of the model, it's just cause I'm playing around with some of these tools.
+
+* [qwen3:8b](https://smith.langchain.com/public/a8876d3a-31e9-4e3a-90b3-8dbfbb2d17ce/r)

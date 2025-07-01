@@ -1,8 +1,5 @@
 from langgraph.prebuilt import create_react_agent
-import os
-
-# os.environ["LANGSMITH_TRACING"] = "true"
-# os.environ["LANGSMITH_API_KEY"] = ""
+import sys
 
 def employee_info(company_name: str, year: int) -> str:
     '''Searches the web for info about the company during the year provided and returns employee count.'''
@@ -20,12 +17,27 @@ def employee_info(company_name: str, year: int) -> str:
         case _:
             return f"Unable to find employee info for {company_name}"
 
-graph = create_react_agent(
-    # "anthropic:claude-3-7-sonnet-latest",
-    "ollama:qwen3:8b",
-    tools=[employee_info],
-    prompt="The current date is June 30, 2025. You are a helpful assistant. Use any tools provided to answer questions.",
-)
-inputs = {"messages": [{"role": "user", "content": "What was the combined headcount of the FAANG companies in 2024?"}]}
-for chunk in graph.stream(inputs, stream_mode="updates"):
-    print(chunk)
+def make_agent(model: str):
+    graph = create_react_agent(
+        model,
+        tools=[employee_info],
+        prompt="The current date is June 30, 2025. You are a helpful assistant. Use any tools provided to answer questions.",
+    )
+    return graph
+
+# Set the LANGSMITH_TRACING environment variable to "true" and the
+# LANGSMITH_API_KEY to the key provided to you by Langsmith if you want to
+# capture the detais of a run. The README alongside this script has some info
+# about runs of this test captured with a few different open models:
+# https://github.com/mikerowehl/ai-samples/tree/main/simple-agent
+if __name__ == "__main__":
+    model = "ollama:qwen3:8b"
+    if len(sys.argv) > 1:
+        model = sys.argv[1]
+    graph = make_agent(model)
+    inputs = {"messages": [{"role": "user", "content": "What was the combined headcount of the FAANG companies in 2024?"}]}
+    # for chunk in graph.stream(inputs, stream_mode="updates"):
+    #    print(chunk)
+    result = graph.invoke(inputs)
+    for r in result["messages"]:
+        r.pretty_print()
