@@ -56,3 +56,13 @@ using an array of strings. The way that tool shows up in langsmith is with an ex
 on the company_name parameter. Maybe that's not how the tool gets presented to the LLM internally? I bet
 if the tool was updated or if better tool signature info was passed to llama it would be able to get 
 there.
+
+I did try a few versions of adding expilcit @tool annotation along with some extra info in the 
+employee_info call. And I tried giving some extra info in the prompt to let some of the models like
+llama know that FAANG is an abbreviation. Often the model would try to call the tool with the string
+"FAANG" to get info. And then when the tool failed it would make up an answer, and actually list out
+the companies when making the guess. So the model has the info that when someone talks about FAANG
+they're talking about a collection of companies. But it doesn't use that info at first. I had assumed
+that the react wrapper had some defaults baked into it to encourage the models to make a plan and then
+act on it. After all, that's what a ReACT agent is supposed to be. But the less mainstream models may
+need a few extra nudges to get there.
