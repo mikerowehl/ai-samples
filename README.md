@@ -11,3 +11,4 @@ currently and maybe we can come up with something that makes it a bit easier to 
 
 * [supervisor sample](supervisor) - the base example from the langgraph supervisor module
 * [simple react agent](simple-agent) - take the web search part of the supervisor example and make it work with qwen
+* [tool prompt](tool-prompt) - change the prompt to force models to use the tool correctly
