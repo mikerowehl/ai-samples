@@ -12,4 +12,5 @@ Here are some example traces, the link text is the command line I used to run th
 execution:
 
 * [python ./live_search.py llama3.1:8b](https://smith.langchain.com/public/7d86d7d6-3ba0-47b7-b02a-80c5538af122/r)
+* [python ./live_search.py llama3.1:70b](https://smith.langchain.com/public/a721a486-0260-47d7-b5f6-bc9d7877d5e7/r)
 * [python ./live_search.py](https://smith.langchain.com/public/80c36394-da85-4a8f-92f0-f705b61726bc/r)
