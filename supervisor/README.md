@@ -20,7 +20,7 @@ and the only thing I've changed is
 moving the model underlying the agents from gpt-4o to qwen3:8b (running
 locally using ollama).
 I haven't been able to get this to make it past the first handoff
-from the supervisor at all. It seems like the model has everyting it needs to
+from the supervisor at all. It seems like the model has everything it needs to
 determine it needs to make a tool call to pass control, but it just never
 actually outputs the call to the tool:
 
